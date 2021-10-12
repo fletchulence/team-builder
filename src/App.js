@@ -13,12 +13,11 @@ const initialFormVals = {
 function App() {
 
   const [ person, setPerson ] = useState([]);
-
-  const [ formVals, setFormVals ] = useState(initialFormVals)
+  const [ formVals, setFormVals ] = useState(initialFormVals);
 
   const updateForm = (input1, input2) =>{
     setFormVals({ ...formVals, [input1]: input2})
-  }
+  };
 
   const submitForm = () =>{
     const newPerson = {
@@ -27,8 +26,8 @@ function App() {
       role: formVals.role
     }
     setPerson(person.concat(newPerson))
+    setFormVals(initialFormVals)
   }
-  console.log(person)
 
   return (
     <div className="App">
@@ -40,8 +39,13 @@ function App() {
         submit={submitForm}
       />
 
-
-      <Person details={person}/>
+    {
+      person.map((pers, idx) =>{
+        return(
+          <Person key={idx} details={pers}/>
+        )
+      })
+    }
 
     </div>
   );

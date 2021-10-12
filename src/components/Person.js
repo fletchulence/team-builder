@@ -10,7 +10,9 @@ export default function Person(props){
   }
   return(
     <div className='container'>
-
+      <h1>{details.username}</h1>
+      <p>Email: {details.email}</p>
+      <p>Favorite Sport: {details.role}</p>
     </div>
   )
 }
